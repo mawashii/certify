@@ -73,16 +73,16 @@ if __name__ == '__main__':
             acme_git = os.path.join(path, 'acme.sh')
             acme = os.path.join(acme_git, 'acme.sh')
             os.chdir(acme_git)
-            if not run_cmd([acme, '--install', '--staging', '--home', acme_home, '--accountemail', email, '--nocron']):
+            if not run_cmd([acme, '--install', '--home', acme_home, '--accountemail', email, '--nocron']):
                 exit(1, 'Setting up acme.sh failed')
             os.chdir(acme_home)
             acme = os.path.join(acme_home, 'acme.sh')
-            if not run_cmd([acme, '--issue', '--staging', '--standalone', '--home', acme_home, '--fullchain-file', fullchain_path, '--key-file', privkey_path, '--reloadcmd', "{} reload".format(script)] + domains):
+            if not run_cmd([acme, '--issue', '--standalone', '--home', acme_home, '--fullchain-file', fullchain_path, '--key-file', privkey_path, '--reloadcmd', "{} reload".format(script)] + domains):
                 exit(2, 'Issuing certificate for {} failed.'.format(domain))
             exit(0)
 
         os.chdir(acme_home)
         acme = os.path.join(acme_home, 'acme.sh')
-        if not run_cmd([acme, '--staging', '--renew-all', '--home', acme_home]):
+        if not run_cmd([acme, '--renew-all', '--home', acme_home]):
             exit(3, 'Certificate renewal failed')
     exit(0)
