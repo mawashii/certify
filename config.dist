@@ -1,0 +1,11 @@
+[cert]
+domains: irc.somewhere.org irc2.somewhere.org
+email: hi@acme.sh
+
+[irc]
+host: irc.somewhere.org
+port: 7000
+oper_user: oper
+oper_pass: secret
+cert_path: /etc/inspircd/cert.pem
+key_path: /etc/inspircd/key.pem
